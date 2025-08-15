@@ -41,7 +41,7 @@ function KareninAlani(kenaruzunlugu) {
 }
 
 /* (Oto test yok) Yukarıdaki KareninAlani fonksiyonunu kenar uzunluğu = 10 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
-console.log(KareninAlani(10));
+console.log("Karenin Alanı:",KareninAlani(10));
 
 /* GÖREV 1:  
 - CemberinCevresi fonksiyonunu kullanarak aşağıdaki yönergeleri uygulayın:
@@ -56,7 +56,7 @@ function CemberinCevresi(r) {
 }
 
 /* (Oto test yok) Yukarıdaki CemberinCevresi fonksiyonunu yarıçap = 5 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
-console.log(CemberinCevresi(5));
+console.log("Çemberin Çevresi:",CemberinCevresi(5));
 
 /* 	GÖREV 2:  
 - CemberinAlani fonksiyonunu kullanarak aşağıdaki yönergeleri uygulayın:
@@ -67,11 +67,11 @@ console.log(CemberinCevresi(5));
 */
 
 function CemberinAlani(r,pi) {
-  return pi * Math.pow(r,2)
+  return pi * Math.pow(r,2);
 }
 
 /* (Oto test yok) Yukarıdaki CemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
-console.log(CemberinAlani(15 ,pi))
+console.log("Çemberin Alanı:",CemberinAlani(15 ,pi));
 
 /* 	GÖREV 3:
 	- Sayfanın en üstünde global değişken olarak tanımlanmış bir sayilar dizisi bulunmaktadır. Bu dizi içinde 0 ile 1000 arasında rasgele oluşturulmuş tam sayılar ve ondalıklı sayılar bulunmaktadır. Bu diziyi kullanarak aşağıdakileri uygulayın:
@@ -92,6 +92,8 @@ console.log(CemberinAlani(15 ,pi))
 
 /*  (oto test yok) sayilar dizisi içinde kaç adet sayı olduğunu konsola yazdırın */
 
+console.log("Toplam sayı adedi:", sayilar.length);
+
 let ucetambolunenler,
   enkucuk,
   enbuyuk,
@@ -101,28 +103,65 @@ let ucetambolunenler,
   tekraredensayilar;
 
 // 3a çözümü
-
-/* kodlar buraya */
-
+enbuyuk=0;
+for(let i=0;i < sayilar.length;i++){
+  if(sayilar[i]>enbuyuk){
+    enbuyuk = sayilar[i];
+  }
+}
+console.log("En Büyük Sayı",enbuyuk);
+enkucuk=sayilar[0];
+for(let i=0;i < sayilar.length;i++){
+  if(sayilar[i]<enkucuk){
+    enkucuk = sayilar[i];
+  }
+}
+console.log("En Küçük Sayı:",enkucuk);
 // 3b çözümü:
 
-/* kodlar buraya */
+ucetambolunenler=[];
+sayilar.forEach(sayi => {
+  if (sayi % 3 === 0) {
+    ucetambolunenler.push(sayi);
+  }
+});
 
 // 3c çözümü:
 
-/* kodlar buraya */
+ucebolunenlerintoplami = ucetambolunenler.reduce((toplam, sayi) => toplam + sayi, 0);
+console.log("3'e bölünenlerin toplamı:", ucebolunenlerintoplami);
 
 // 3d çözümü
 
-/* kodlar buraya */
+besyuzdenkucuksayilar = sayilar.filter(sayi => sayi < 500);
+console.log("500'den küçük sayılar:", besyuzdenkucuksayilar);
 
 // 3e çözümü
 
-/* kodlar buraya */
+siralisayilar = besyuzdenkucuksayilar.sort((a, b) => a - b);
+console.log("Sıralı sayılar:", siralisayilar);
 
 // 3f çözümü
 
-/* kodlar buraya */
+tekraredensayilar = [];
+
+let tekrarSayilari = {};
+
+sayilar.forEach(sayi => {
+  if (tekrarSayilari[sayi]) {
+    tekrarSayilari[sayi] += 1;
+  } else {
+    tekrarSayilari[sayi] = 1;
+  }
+});
+
+
+for (let sayi in tekrarSayilari) {
+  if (tekrarSayilari[sayi] > 1) {
+    tekraredensayilar.push(`${sayi} sayısı ${tekrarSayilari[sayi]} kere tekrar edilmiştir`);
+  }
+}
+console.log("Tekrar eden sayılar:",tekraredensayilar)
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 
